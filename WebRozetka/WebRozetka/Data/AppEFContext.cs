@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using WebRozetka.Data.Entities;
 using WebRozetka.Data.Entities.Identity;
 using WebRozetka.Data.Entities.Orders;
+using WebRozetka.Data.Entities.Addres;
 
 namespace WebRozetka.Data
 {
@@ -12,8 +13,8 @@ namespace WebRozetka.Data
         IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public AppEFContext(DbContextOptions<AppEFContext> options)
-            :base(options)
-        {  }
+            : base(options)
+        { }
         public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<ProductImageEntity> ProductImages { get; set; }
@@ -22,6 +23,9 @@ namespace WebRozetka.Data
         public DbSet<OrderEntity> Orders { get; set; }
         public DbSet<OrderItemEntity> OrderItems { get; set; }
         public DbSet<OrderContactInfoEntity> OrderContactInfos { get; set; }
+        public DbSet<AreaEntity> Areas { get; set; }
+        public DbSet<SettlementEntity> Settlements { get; set; }
+        public DbSet<WarehouseEntity> Warehouses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

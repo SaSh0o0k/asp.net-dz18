@@ -4,6 +4,7 @@ using WebRozetka.Constants;
 using WebRozetka.Data.Entities;
 using WebRozetka.Data.Entities.Identity;
 using WebRozetka.Helpers;
+using WebRozetka.Interfaces;
 
 namespace WebRozetka.Data
 {
@@ -23,6 +24,23 @@ namespace WebRozetka.Data
 
                 var roleManager = scope.ServiceProvider
                     .GetRequiredService<RoleManager<RoleEntity>>();
+
+                var novaPoshta = scope.ServiceProvider.GetRequiredService<INovaPoshtaService>();
+                if (!context.Areas.Any())
+                {
+                    novaPoshta.GetAreas();
+                }
+
+                if (!context.Settlements.Any())
+                {
+                    novaPoshta.GetSettlements();
+                }
+
+                if (!context.Warehouses.Any())
+                {
+                    novaPoshta.GetWarehouses();
+                }
+
 
                 #region Додавання користувачів та ролей
 
